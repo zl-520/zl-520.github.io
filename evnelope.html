@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>一封给你的信</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="envelope-body">
+    <!-- 页面容器 -->
+    <div class="envelope-container">
+        <!-- 信封3D容器 -->
+        <div class="envelope-wrapper">
+            <!-- 信封主体 -->
+            <div class="envelope">
+                <!-- 信封正面装饰 -->
+                <div class="envelope-front">
+                    <!-- 收信人提示 -->
+                    <div class="recipient">
+                        <p>致：实习满一月的你</p>
+                    </div>
+                    
+                    <!-- 温馨寄语 -->
+                    <div class="envelope-message">
+                        <p>这封信，藏着对你所有的心疼与鼓励</p>
+                    </div>
+                </div>
+                
+                <!-- 信封盖 -->
+                <div class="envelope-lid"></div>
+                
+                <!-- 邮票 -->
+                <div class="stamp">
+                    <span>💌</span>
+                    <div class="stamp-text">关怀</div>
+                </div>
+                
+                <!-- 信封侧面文字 -->
+                <div class="envelope-side">
+                    <p>拆开它，听听我们的心里话</p>
+                </div>
+            </div>
+            
+            <!-- 拆信按钮 -->
+            <button class="open-btn" onclick="window.location.href='index.jsp'">
+                拆开这封信
+            </button>
+            
+            <!-- 信封底部装饰 -->
+            <div class="envelope-shadow"></div>
+        </div>
+    </div>
+</body>
+</html>

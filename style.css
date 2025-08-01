@@ -1,0 +1,311 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 公共背景样式 */
+body {
+    background: linear-gradient(135deg, #f8c7d2 0%, #d1e8f7 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "XingShu", "行书", serif;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 信封页面样式 */
+.envelope-container {
+    perspective: 1000px; /* 3D透视效果 */
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+}
+
+/* 信封主体 */
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f8c7d2;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+/* 信封文字样式 */
+.recipient {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.recipient p {
+    color: #8b4a65;
+    font-size: 18px;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+
+.envelope-message {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80%;
+    z-index: 1;
+}
+
+.envelope-message p {
+    color: #7d3c5a;
+    font-size: 14px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
+}
+
+.envelope-side {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transform: rotate(-90deg) translateY(-100%);
+    transform-origin: top left;
+}
+
+.envelope-side p {
+    color: #e67e90;
+    font-size: 12px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+/* 信封正面装饰 */
+.envelope-front::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    border-top: 100px solid #e67e90;
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f8c7d2 0%, #f6b5c5 100%);
+    border-radius: 0 0 10px 10px;
+}
+
+/* 信封盖 */
+.envelope-lid {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #e67e90;
+    transform-origin: bottom;
+    transform: rotateX(0deg);
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 10px 10px 0 0;
+    z-index: 2;
+}
+
+.envelope-wrapper:hover .envelope-lid {
+    transform: rotateX(30deg); /* 悬停时轻微抬起 */
+}
+
+/* 邮票 */
+.stamp {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 80px;
+    background-color: #d1e8f7;
+    border: 2px solid white;
+    transform: rotate(-10deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+.stamp span {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.stamp-text {
+    font-size: 12px;
+    color: #5a9bd5;
+    font-weight: bold;
+}
+
+/* 信封阴影 */
+.envelope-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 20px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+/* 拆信按钮 */
+.open-btn {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #d1e8f7 0%, #a8d9f7 100%);
+    border: none;
+    border-radius: 30px;
+    color: #5a9bd5;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.open-btn:hover {
+    background: linear-gradient(90deg, #a8d9f7 0%, #d1e8f7 100%);
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* 书信页面样式（复用并保留之前的样式） */
+.container {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 0.8s forwards 0.3s; /* 进入动画 */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.frame {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 10px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to right, #f8c7d2, #a8d9f7);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.letter {
+    background: linear-gradient(180deg, rgba(248, 215, 226, 0.2) 0%, rgba(209, 232, 247, 0.2) 100%);
+    padding: 40px 60px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.letter-header {
+    margin-bottom: 0;
+}
+
+.letter-body p {
+    margin-bottom: 0;
+    line-height: 2;
+}
+
+.letter-footer {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.letter-footer p {
+    margin-bottom:0;
+}
+
+.letter p {
+    background: linear-gradient(90deg, #e67e90, #5a9bd5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.letter p:hover {
+    transform: translateX(5px);
+}
+
+.decor-icon {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .envelope-wrapper {
+        width: 300px;
+        height: 210px;
+    }
+    
+    .stamp {
+        width: 50px;
+        height: 70px;
+    }
+    
+    .frame {
+        padding: 20px;
+    }
+    
+    .letter {
+        padding: 20px 15px;
+    }
+    
+    .letter p {
+        font-size: 16px;
+    }
+}
